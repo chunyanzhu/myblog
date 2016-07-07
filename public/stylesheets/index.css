@@ -1,0 +1,14 @@
+@import url('./sorts.css');
+@import url('./navBar.css');
+/*list*/
+.contW{
+	padding: 20px 20px;
+}
+.contW .list .item{
+	border-bottom: dashed 1px #acacac;
+	padding: 15px 10px;
+}
+.contW .list .item .title{
+	padding: 3px 0;
+}
+

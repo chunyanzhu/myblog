@@ -1,0 +1,49 @@
+<title><%= title %></title>
+<% include includes/header.html %>
+<link rel="stylesheet" type="text/css" href="../stylesheets/edit.css">
+<link href="../ueditor/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../ueditor/third-party/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../ueditor/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="../ueditor/editor_api.js"></script>
+<script type="text/javascript" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+<div class="bodyW">
+	<div class="editW">
+		<ul class="form_ul">
+			<li class="form_li">
+				<label class="form_li_l">标题:</label>
+				<input type="text" class="form_li_ipt title" name="title" value="<%=article.title%>" placeholder="请填写标题">
+			</li>
+			<li class="form_li">
+				<label class="form_li_l">分类:</label>
+				<select class="form_li_sel" name="cata">
+                    <% catas.forEach(function(v){ %>
+                        <option value="<%=v.key%>" <% if(v.key == article.cata){%><%='selected'%><%}%>><%=v.value%></option>
+                    <% }) %>
+				</select>
+			</li>
+		</ul>
+
+		<div class="editBox">
+			<script type="text/plain" id="myEditor" style="width:1000px;height:240px;">
+			<%- article.content%>
+			</script>
+		</div>
+		<div class="btn_w tc">
+			<a href="javascript:;" class="btn savePost">保存</a>
+			<a href="javascript:;" class="btn gray_btn saveDraft">保存到草稿</a>
+		</div>
+
+	</div>
+</div>
+<script>
+	var isAuther = <%= isAuther %>;
+</script>
+<script type="text/javascript" src="../javascripts/edit.js"></script>
+<script type="text/javascript">
+</script>
+</body>
+</html>

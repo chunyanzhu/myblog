@@ -1,0 +1,41 @@
+<title><%= title %></title>
+<% include includes/header.html %>
+<link rel="stylesheet" type="text/css" href="../stylesheets/index.css">
+<link rel="stylesheet" href="../stylesheets/font/font-awesome.min.css">
+<style>
+.user_l{
+	text-align: center;
+	color: #585858;
+	padding-top: 50px;
+}
+</style>
+</head>
+<body>
+<div class="bodyW">
+	<div class="leftW user_l">
+		<img width="100" height="100" src="<%= userInfo && userInfo.userInfo && userInfo.userInfo.headPhoto && userInfo.userInfo.headPhoto.replace('uploads', '') || '/images/headPhoto.jpg'%>">
+		<p><%= userInfo && userInfo.username%></p>
+		<p><%= userInfo && userInfo.userInfo && userInfo.userInfo.des%></p>
+		<a href="javascript:;" class="btn">关注</a>
+	</div>
+	<div class="rightW">
+		<% include includes/sorts.html %>
+		<div class="contW">
+			<ul class="list">
+				<% articles.forEach(function(v){ %>
+					<li class="item">
+						<p><span class="gray_word"><%= new Date(v['time']).toLocaleString() %></span></p>
+						<h3 class="title"><a href="/post/<%= v['_id'] %>"><%= v['title'] %></a></h3>
+						<p class="gray_word">阅读 <%= v['read'] || 0 %> . 评论 <%= v['commit'] || 0 %> . 喜欢 <%= v['fav'] && v['fav'].length %></p>
+					</li>
+				<% }) %>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<% include includes/footer.html %>
+<script type="text/javascript" src="../javascripts/sorts.js"></script>
+<script type="text/javascript" src="../javascripts/navBar.js"></script>
+</body>
+</html>

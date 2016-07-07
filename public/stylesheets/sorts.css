@@ -1,0 +1,17 @@
+/*categoly*/
+.sorts{
+	display: -webkit-box;
+	display: box;
+	display: -webkit-flex;
+	display: flex;
+}
+.sorts .sort_a{
+	-webkit-box-flex: 1;
+	box-flex: 1;
+	flex: 1;
+	line-height: 3.0;
+	border-bottom: solid 2px #ccc;
+}
+.sorts .sort_a.cur, .sorts .sort_a:hover{
+	border-bottom: solid 2px green;
+}

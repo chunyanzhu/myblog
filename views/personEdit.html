@@ -1,0 +1,50 @@
+<title><%= title %></title>
+<% include includes/header.html %>
+<link rel="stylesheet" type="text/css" href="../stylesheets/form.css">
+<link rel="stylesheet" type="text/css" href="../stylesheets/personEdit.css">
+<link rel="stylesheet" href="../stylesheets/font/font-awesome.min.css">
+
+</head>
+<body>
+
+	<ul class="form_ul">
+		<% if(type == 'username'){ %>
+		<li class="form_li">
+			<span class="form_li_l">名字</span>
+			<input type="text" name="username" value="<%=userInfo['username']%>" placeholder="请输入您的用户名">
+		</li>
+		<% }else if(type == 'email'){ %>
+		<li class="form_li">
+			<span class="form_li_l">邮箱</span>
+			<input type="text" name="email" value="<%=userInfo['email']%>" placeholder="请输入您的邮箱">
+		</li>
+		<% }else if(type == 'address'){ %>
+		<li class="form_li">
+			<span class="form_li_l">地址</span>
+			<input type="text" name="address" value="<%=userInfo['address']%>" placeholder="请输入您的地址">
+		</li>
+		<% }else if(type == 'qq'){ %>
+		<li class="form_li">
+			<span class="form_li_l">qq</span>
+			<input type="text" name="qq" value="<%=userInfo['qq']%>" placeholder="请输入您的qq">
+		</li>
+		<% }else if(type == 'phone'){ %>
+		<li class="form_li">
+			<span class="form_li_l">电话</span>
+			<input type="text" name="phone" value="<%=userInfo['phone']%>" placeholder="请输入您的电话">
+		</li>
+		<% }else if(type == 'des'){ %>
+		<li class="form_li">
+			<span class="form_li_l">个性签名</span>
+			<input type="text" name="des" value="<%=userInfo['des']%>" placeholder="一句话描述我自己">
+		</li>
+		<% } %>
+	</ul>
+	<input type="hidden" name="type" value="<%=type%>">
+	<div class="btnw tc"><a href="javascript:;" class="btn savePersonEdit plr50">保存</a></div>
+
+
+<% include includes/footer.html %>
+<script type="text/javascript" src="../javascripts/personEdit.js"></script>
+</body>
+</html>

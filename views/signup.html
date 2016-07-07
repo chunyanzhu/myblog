@@ -1,0 +1,43 @@
+<title><%= title %></title>
+<% include includes/header.html %>
+<link rel="stylesheet" type="text/css" href="../stylesheets/form.css">
+<style type="text/css">
+	.signupForm{
+		padding: 50px 70px 50px 50px;
+	}
+</style>
+</head>
+<body>
+<div class="bodyW">
+	<% include includes/leftW.html %>
+	<div class="rightW">
+		<form action="/doSignup" method="post">
+		<div class="formW signupForm" style="margin-top: 100px;">
+		
+			<ul class="form_ul">
+				<li class="form_li">
+					<label class="form_li_l">用户名:</label>
+					<input type="text" class="form_li_ipt" name="username" value="" placeholder="请输入用户名">
+				</li>
+				<li class="form_li">
+					<label class="form_li_l">邮箱:</label>
+					<input type="text" class="form_li_ipt" name="email" value="" placeholder="请输入您的邮箱">
+				</li>
+				<li class="form_li">
+					<label class="form_li_l">密码:</label>
+					<input type="password" class="form_li_ipt" name="password" value="" placeholder="请设置密码">
+				</li>
+				<li class="form_li">
+					<label class="form_li_l">确认密码:</label>
+					<input type="password" class="form_li_ipt" name="confrim_password" value="" placeholder="请再次输入密码">
+				</li>
+			</ul>	
+		</div>
+		<div class="btnw tc"><!-- <input type="submit" value="注册" class="btn signupBtn plr50"> -->	<a href="javascript:;" class="btn signupBtn plr50">注册</a></div>
+		</form>
+	</div>
+</div>
+<% include includes/footer.html %>
+<script type="text/javascript" src="../javascripts/signup.js"></script>
+</body>
+</html>

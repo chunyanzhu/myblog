@@ -1,0 +1,63 @@
+/*form*/
+.form_ul{
+    background: #fff;
+    margin-top: 15px;
+}
+.form_ul .form_li{
+    margin: 0 15px;
+    line-height: 46px;
+    position: relative;
+    display: -webkit-box;
+    display: box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #c8c8c8;
+}
+.form_ul .form_li:last-child{
+    border: none;
+}
+.form_ul .form_li .form_li_l{
+    font-size: 14px;
+    line-height: 46px;
+    height: 46px;
+    min-width: 100px;
+    display: inline-block;
+}
+.form_ul .form_li .form_li_ipt{
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    border: none;
+    padding: 14px 0;
+}
+.form_ul .form_li .form_li_sel{
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    flex: 1;
+    -webkit-appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.form_ul .form_li .arrow{
+    top: 16px;
+    right: 15px;
+}
+
+.textarea_w{
+    padding: 5px 15px;
+    background: #fff;
+    margin-top: 15px;
+}
+.form_li_text{
+    width: 100%;
+    box-sizing: border-box;
+    border:none;
+    resize: none;
+}

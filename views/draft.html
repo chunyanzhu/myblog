@@ -1,0 +1,35 @@
+<title><%= title %></title>
+<% include includes/header.html %>
+<link rel="stylesheet" type="text/css" href="../stylesheets/post.css">
+<link rel="stylesheet" type="text/css" href="../stylesheets/sorts.css">
+<link rel="stylesheet" href="../stylesheets/font/font-awesome.min.css">
+
+</head>
+<body>
+
+<div class="post_w">
+	<% if(Object.keys(articleInfo).length){ %>
+		<!--有文章信息//s-->
+		<input type="hidden" name="article_id" value="<%= id %>">
+		<div class="auther_info">			
+			<% if(isAuther){ %>
+				<a class="btn edit_btn" href="/edit/<%= articleInfo._id%>?type=2">编辑文章</a>
+			<% } %>
+		</div>
+		<div class="post_b">
+			<h2 class="title textc"><%= articleInfo.title %></h2>
+			<div class="con_b">
+				<%- articleInfo.content %>
+			</div>
+		</div>
+		<!--有文章信息//end-->
+	<% }else{ %>
+		<p>暂无文章信息</p>
+	<% } %>
+
+	<% include includes/footer.html %>
+</div>
+<script type="text/javascript">
+</script>
+</body>
+</html>

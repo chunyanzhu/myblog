@@ -1,0 +1,63 @@
+<title><%= title %></title>
+<% include includes/header.html %>
+<link rel="stylesheet" type="text/css" href="../stylesheets/form.css">
+<style type="text/css">
+	.signinForm{
+		padding: 50px 70px 50px 50px;
+	}
+	.signinLinks{
+		display: -webkit-box;
+		display: box;
+		display: flex;
+		display: -webkif-flex;
+	}
+	.signinLinks>a{
+		-webkit-box-flex: 1;
+		box-flex: 1;
+		flex: 1;
+		-webkit-flex: 1;
+	}
+</style>
+</head>
+<body>
+<div class="bodyW">
+	<% include includes/leftW.html %>
+	<div class="rightW">
+		<div id="part1" style="display: block;">
+			<div class="formW signinForm" style="margin-top: 100px;">
+				<ul class="form_ul">
+					<li class="form_li">
+						<label class="form_li_l">邮箱:</label>
+						<input type="text" class="form_li_ipt" name="email" value="" placeholder="请输入您的注册邮箱">
+						<a href="javascript:;" class="btn sendcode">发送验证码</a>
+					</li>
+					<li class="form_li">
+						<label class="form_li_l">验证码:</label>
+						<input type="text" class="form_li_ipt" name="code" value="" placeholder="请输入邮箱接收的验证码">
+					</li>
+				</ul>
+			</div>
+			<p class="sendCodeSuccTip"></p>
+			<div class="btnw tc"><a href="javascript:;" class="btn getPassBtn plr50">下一步</a></div>
+		</div>
+		<div id="part2" style="display: none;">
+			<div class="formW signinForm" style="margin-top: 100px;">
+				<ul class="form_ul">
+					<li class="form_li">
+						<label class="form_li_l">请输入新密码:</label>
+						<input type="password" class="form_li_ipt" name="pwd" value="" placeholder="请输入新密码">
+					</li>
+					<li class="form_li">
+						<label class="form_li_l">请确认新密码:</label>
+						<input type="password" class="form_li_ipt" name="confrim_pwd" value="" placeholder="请确认新密码">
+					</li>
+				</ul>
+			</div>
+			<div class="btnw tc"><a href="javascript:;" class="btn saveNewPwd plr50">保存</a></div>
+		</div>
+	</div>
+</div>
+<% include includes/footer.html %>
+<script type="text/javascript" src="../javascripts/getPass.js"></script>
+</body>
+</html>

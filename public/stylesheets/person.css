@@ -1,0 +1,35 @@
+.per_i>a{
+	display: block;
+	width: 100%;
+}
+.r_s{
+	float: right;
+}
+.editPhoto{
+	position: relative;
+}
+input[name="uploadPhoto"]{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+}
+.form_li_ipt{
+	position: relative;
+}
+.form_ul .form_li .photo_li_ipt{
+	margin: 14px 0;
+	padding: 0;
+}
+.photo_loading_mask{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	background: rgba(0, 0 , 0, 0.5);
+
+}

@@ -1,0 +1,45 @@
+<title><%= title %></title>
+<% include includes/header.html %>
+<link rel="stylesheet" type="text/css" href="../stylesheets/form.css">
+<style type="text/css">
+	.signinForm{
+		padding: 50px 70px 50px 50px;
+	}
+	.signinLinks{
+		display: -webkit-box;
+		display: box;
+		display: flex;
+		display: -webkif-flex;
+	}
+	.signinLinks>a{
+		-webkit-box-flex: 1;
+		box-flex: 1;
+		flex: 1;
+		-webkit-flex: 1;
+	}
+</style>
+</head>
+<body>
+<div class="bodyW">
+	<% include includes/leftW.html %>
+	<div class="rightW">
+		<div class="formW signinForm" style="margin-top: 100px;">
+			<ul class="form_ul">
+				<li class="form_li">
+					<label class="form_li_l">用户名:</label>
+					<input type="text" class="form_li_ipt" name="username" value="" placeholder="请输入用户名">
+				</li>
+				<li class="form_li">
+					<label class="form_li_l">密码:</label>
+					<input type="password" class="form_li_ipt" name="password" value="" placeholder="请输入密码">
+				</li>
+			</ul>
+			<div class="signinLinks"><a href="/getpass" class="blue_word tip tl" style="padding-left: 15px;">忘记密码</a><a href="/signup" class="blue_word tip tr" style="padding-right: 15px;">前往注册</a></div>
+		</div>
+		<div class="btnw tc"><a href="javascript:;" class="btn signinBtn plr50">登陆</a></div>
+	</div>
+</div>
+<% include includes/footer.html %>
+<script type="text/javascript" src="../javascripts/signin.js"></script>
+</body>
+</html>

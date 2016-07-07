@@ -1,0 +1,20 @@
+<div class="navBar tr">
+	<!--unsigned-->
+	<% if(!signed){ %>
+		<a href="/signin" class="navBar_a"><i class="fa fa-sign-in"></i>登陆</a>
+		<a href="/signup" class="navBar_a"><i class="fa fa-user"></i>注册</a>
+	<% }else{ %>
+		<div class="usr_photo">
+			<img class="photo_img" src="<%= userInfo && userInfo['userInfo'] && userInfo['userInfo']['headPhoto'] && userInfo['userInfo']['headPhoto'].replace('uploads', '') || '../images/headPhoto.jpg' %>" width="50" height="50" alt="<%= userInfo && userInfo.username %>" title="<%= userInfo && userInfo.username %>" />
+		</div>
+	<% } %>
+</div>
+<!--个人选项卡-->
+<div class="userBox" style="display: none;">
+	<ul class="userBoxList">
+		<li class="userBoxLi"><a href="/user/<%= userInfo.username%>" class="userBoxLi">我的发布</a></li>
+		<li class="userBoxLi"><a href="/collect" class="userBoxLi">我的收藏</a></li>
+		<li class="userBoxLi"><a href="/person" class="userBoxLi">个人资料</a></li>
+		<li class="userBoxLi"><a href="javascript:;" class="userBoxLi" id="signout">退出</a></li>
+	</ul>
+</div>

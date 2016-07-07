@@ -1,0 +1,68 @@
+<title><%= title %></title>
+<% include includes/header.html %>
+<link rel="stylesheet" type="text/css" href="../stylesheets/form.css">
+<link rel="stylesheet" type="text/css" href="../stylesheets/person.css">
+<link rel="stylesheet" href="../stylesheets/font/font-awesome.min.css">
+
+</head>
+<body>
+<div class="bodyW">
+	<% include includes/leftW.html %>
+	<div class="rightW">
+		<div class="contW">
+			<ul class="per_l form_ul">
+				<li class="per_i form_li">
+					<a href="javascript:;" class="editPhoto">
+						<span class="l_s form_li_l">头像</span>
+						<span class="r_s form_li_ipt photo_li_ipt">
+							<img class="photo_img" width="50" height="50" src="<%=userInfo['userInfo']['headPhoto'] && userInfo['userInfo']['headPhoto'].replace('uploads/', '') || '../images/headPhoto.jpg'%>" />
+							<i class="photo_loading_mask"></i>
+						</span>
+						<input type="file" accept="image/*" style="opacity: 0;" name="uploadPhoto">
+					</a>
+				</li>
+				<li class="per_i form_li">
+					<a href="/personEdit?type=username">
+						<span class="l_s form_li_l">名字</span>
+						<span class="r_s form_li_ipt"><%=userInfo['username']%></span>
+					</a>
+				</li>
+				<li class="per_i form_li">
+					<a href="/personEdit?type=email">
+						<span class="l_s form_li_l">邮箱</span>
+						<span class="r_s form_li_ipt"><%=userInfo['email']%></span>
+					</a>
+				</li>
+				<li class="per_i form_li">
+					<a href="/personEdit?type=address">
+						<span class="l_s form_li_l">地址</span>
+						<span class="r_s form_li_ipt"><%=userInfo['userInfo']['address']%></span>
+					</a>
+				</li>
+				<li class="per_i form_li">
+					<a href="/personEdit?type=qq">
+						<span class="l_s form_li_l">qq</span>
+						<span class="r_s form_li_ipt"><%=userInfo['userInfo']['qq']%></span>
+					</a>
+				</li>
+				<li class="per_i form_li">
+					<a href="/personEdit?type=phone">
+						<span class="l_s form_li_l">电话</span>
+						<span class="r_s form_li_ipt"><%=userInfo['userInfo']['phone']%></span>
+					</a>
+				</li>
+				<li class="per_i form_li">
+					<a href="/personEdit?type=des">
+						<span class="l_s form_li_l">个性签名</span>
+						<span class="r_s form_li_ipt"><%=userInfo['userInfo']['des']%></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<% include includes/footer.html %>
+<script type="text/javascript" src="../javascripts/person.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+@import url('./form.css');
+.title{
+	font-size: 16px;
+	padding: 5px 10px;
+}
+.edit_l{
+	display: -webkit-box;
+	display: box;
+	display: -webkit-flex;
+	display: flex;
+}
+.editW{
+	padding: 0 20px;
+}
+.editBox{
+	margin-top: 20px;
+}

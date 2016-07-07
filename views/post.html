@@ -1,0 +1,111 @@
+<title><%= title %></title>
+<% include includes/header.html %>
+<link rel="stylesheet" type="text/css" href="../stylesheets/post.css">
+<link rel="stylesheet" type="text/css" href="../stylesheets/sorts.css">
+<link rel="stylesheet" href="../stylesheets/font/font-awesome.min.css">
+
+</head>
+<body>
+
+<div class="post_w">
+	<% if(Object.keys(articleInfo).length){ %>
+		<!--有文章信息//s-->
+		<input type="hidden" name="article_id" value="<%= id %>">
+		<div class="auther_info">
+			<% if(Object.keys(autherInfo).length){ %>
+			<dl class="clearfix">
+				<dt class="auth_dt">
+					<img src="<%= autherInfo.headPhoto && autherInfo.headPhoto.replace('uploads', '')  || '../images/headPhoto.jpg' %>" class="headPhoto">
+				</dt>
+				<dd>作者：<%= articleInfo.auther %></dd>
+				<dd><%= autherInfo.des || '这个人很懒，什么都没留下～' %></dd>
+			</dl>
+			<% }else{ %>
+				<p>找不到作者信息，不开心</p>
+			<% } %>
+			<% if(isAuther){ %>
+				<a class="btn edit_btn" href="/edit/<%= articleInfo._id%>?type=1">编辑文章</a>
+			<% } %>
+		</div>
+		<div class="post_b">
+			<h2 class="title textc"><%= articleInfo.title %></h2>
+			<div class="con_b">
+				<%- articleInfo.content %>
+			</div>
+		</div>
+		<div class="fav">
+			<a href="javascript:;" class="btn favBtn">赞</a>
+			<span class="favNum"><%= articleInfo.fav && articleInfo.fav.length || '' %></span>
+		</div>
+		<div class="comments_b">
+			<% if(comments.length){ %>
+				<ul class="comments_l">
+					<% comments.forEach(function(v, i){ %>
+						<li class="comments_i">
+							<p><a href="" class="blue_word"><%= v.auther %></a>   <span class="gray_word"><%= new Date(v.time).toLocaleString() %></span></p>
+							<p class="pl15"><%= v.comment || '没有评论内容' %></p>
+						</li>
+					<% }) %>
+				</ul>
+			<% }else{ %>
+				暂无评论
+			<% } %>
+			<textarea class="comment_textarea" placeholder="说说你的意见" rows="10"></textarea>
+			<a href="javascript:;" class="btn commentBtn">发表评论</a>
+		</div>
+		<!--有文章信息//end-->
+	<% }else{ %>
+		<p>暂无文章信息</p>
+	<% } %>
+
+	<% include includes/footer.html %>
+</div>
+<script type="text/javascript">
+var article_id = $('input[name=article_id]').val();
+//赞
+$('.favBtn').on('click', function(){
+	$.ajax({
+		url: '/doFav',
+		type: 'POST',
+		data: {
+			article_id: article_id
+		},
+		success: function(resp){
+			var favNum = resp.data.favNum;
+			$('.favNum').html(favNum);
+		}
+	});
+});
+//发表评论
+$('.commentBtn').on('click', function(){
+	$.ajax({
+		url: '/doComment',
+		type: 'POST',
+		data: {
+			article_id: article_id,
+			comment: $('.comment_textarea').val()
+		},
+		success: function(resp){
+			if(resp.retcode != 1){
+				alert(resp.msg);
+				if(resp.retcode == -1){
+					var url = resp.data.url;
+					window.location.href = url;
+				}
+				return;
+			}
+			var data = resp.data || {};
+			
+			var commentStr = '<li class="comments_i">\
+							<p><a href="" class="blue_word">' + data.auther + '</a>   <span class="gray_word">' + data.time + '</span></p>\
+							<p class="pl15">' + data.comment + '</p>\
+						</li>';
+			$('.comments_l').append(commentStr);
+			$('.comment_textarea').val('');
+			
+		}
+	});
+});
+</script>
+</body>
+</html>
