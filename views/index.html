@@ -20,9 +20,10 @@
 						<p class="gray_word">阅读 <%= v['read'] || 0 %> . 评论 <%= v['comment'] || 0 %> . 喜欢 <%=  v['fav'] && v['fav'].length %></p>
 					</li>
 				<% }) %>
+
 			</ul>
 			<% if(hasMore){ %>
-			<div class="moreW tc"><a href="/?page=" class="btn">点击加载更多</a></div>
+			<div class="moreW tc"><a href="javascript:;" data-page="1" class="btn nextPageBtn">点击加载更多</a></div>
 			<% } %>
 		<% }else{ %>
 			<p>还没有文章，快去发布一篇吧</p>
@@ -35,5 +36,48 @@
 <script type="text/javascript" src="../javascripts/index.js"></script>
 <script type="text/javascript" src="../javascripts/navBar.js"></script>
 <script type="text/javascript" src="../javascripts/sorts.js"></script>
+<script type="text/javascript">
+	$('.nextPageBtn').on('click', function(){
+		var _this = this;
+		var page = _this.getAttribute('data-page');
+		if(!parseInt(page)){
+			return;
+		}
+		$.ajax({
+			url: '/',
+			type: 'GET',
+			data: {
+				page: page
+			},
+			success: function(resp){
+				if(resp.retcode == 1){
+					var articles = resp.data && resp.data.articles || [];
+					if(!articles.length || !resp.data.hasMore){
+						_this.innerText = '没有了';
+						_this.setAttribute('data-page',0)
+						return;
+					}
+					_this.setAttribute('data-page', parseInt(page)+1);
+					var str = '';
+					articles.map(function(v, i){
+						str += '<li class="item">\
+									<p><a class="blue_word" href="/user/' + v['auther'] + '">' + v['auther'] + '</a>  .  <span class="gray_word">' + new Date(v['time']).toLocaleString() + '</span></p>\
+									<h3 class="title"><a href="/post/' + v['_id'] + '">' + v['title'] + '</a></h3>\
+									<p class="gray_word">阅读 ' + (v['read'] || 0) + ' . 评论 ' + (v['comment'] || 0) + '. 喜欢 ' + (v['fav'] && v['fav'].length) + '</p>\
+								</li>';
+					});
+					$('.list').append(str);
+					
+					
+				}else{
+					alert(resp.msg || '系统故障，请重试');
+				}
+			},
+			error: function(){
+				alert('系统故障，请重试')
+			}
+		});
+	});
+</script>
 </body>
 </html>

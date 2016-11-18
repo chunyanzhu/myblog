@@ -6,7 +6,7 @@ var writeErrorLog = function(text){
 	//判断是否有今天的日志文件
 	fs.exists(dirname + '/error_logs/' + errorFileName, function(exists){
 		if(exists){
-			fs.appendFile(dirname + '/error_logs/' + errorFileName, new Date().toLocaleString() + '  ' + text, function(err, data){
+			fs.appendFile(dirname + '/error_logs/' + errorFileName, 'wx', new Date().toLocaleString() + '  ' + text, function(err, data){
 				if(err){
 					console.log(err);
 				}else{
@@ -14,7 +14,7 @@ var writeErrorLog = function(text){
 				}
 			});
 		}else{
-			fs.writeFile(dirname + '/error_logs/' + errorFileName, new Date().toLocaleString() + '  ' + text, function(err, data){
+			fs.writeFile(dirname + '/error_logs/' + errorFileName, 'wx', new Date().toLocaleString() + '  ' + text, function(err, data){
 				if(err){
 					console.log(err);
 				}else{

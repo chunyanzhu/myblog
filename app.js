@@ -68,7 +68,7 @@ function checkLog(req, res, next){
   var redirectURL = req.originalUrl;
   var pathname = req._parsedUrl.pathname;
   var sid = req.cookies.sid;
-  if(/^\/($)|(index)|(getCata)|(post)|(user)|(cata)/.test(pathname)){
+  if(/^\/($)|(index)|(getCata)|(post)|(user)|(cata)|(doComment)|(doFav)/.test(pathname)){
     //不需要判断登陆条件
     next();
   }else if(/^\/(signin)|(doSignin)|(doSignup)|(doGetPass)|(signup)|(getpass)|(captcha)|(doSendEmail)|(doSetPwd)/.test(redirectURL)){

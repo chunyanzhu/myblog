@@ -48,7 +48,7 @@ router.post('/', function(req, res, next){
 						resolve();
 					}
 				});
-			}else if(name == 'address' || name == 'phone' || name == 'qq'){
+			}else if(name == 'address' || name == 'phone' || name == 'qq' || name == 'des'){
 				collection.find({username: username}).toArray(function(err, docs){
 					if(err){
 						reject('57' + err);

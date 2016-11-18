@@ -9,6 +9,8 @@ var pageSize = 10;
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	var sid = req.cookies.sid;
+	console.log('req.query.page:' + req.query.page)
+	var page = parseInt(req.query.page) || 0;
 	var getUserInfo = new Promise(function(resolve, reject){
 		if(!sid || !sessionObj || !sessionObj[sid] || !sessionObj[sid]['isSigned']){
 			resolve({});
@@ -53,21 +55,36 @@ router.get('/', function(req, res, next) {
 		var articles = data.length > 1 && data[1];
 		var articlesOnePage = [];
 		if(articles.length > pageSize){
-			articles.forEach(function(v, i){
-				if(i < pageSize){
-					articlesOnePage.push(v);
+			articles.map(function(v, i){
+				if((i < pageSize*(page+1)) && (i >= pageSize*page)){
+					console.log(pageSize*page, i, pageSize*(page+1))
+					articlesOnePage.push(articles[i]);
 				}
 			});
 		}
-		articles = articles.length > pageSize ? articlesOnePage : articles;
-		var hasMore = articles.length > pageSize ? true : false;
-		res.render('index', {
-			title: '朱春艳的博客',
-			signed: !!sessionObj[sid],
-			userInfo: userInfo,
-			articles: articles,
-			hasMore: hasMore
-		});
+		var hasMore = pageSize*(page+1) < articles.length ? true : false;
+		if(page){
+			//返回接口
+			res.send({
+				retcode: 1,
+				msg: "",
+				data: {
+					articles: articlesOnePage,
+					hasMore: hasMore
+				}
+			});
+		}else{
+			//输出到模板
+			res.render('index', {
+				title: '朱春艳的博客',
+				signed: !!sessionObj[sid],
+				userInfo: userInfo,
+				articles: articlesOnePage,
+				hasMore: hasMore
+			});
+		}
+		
+		
 	}).catch(function(err){
 		writeErrorLog(__filename + ': ' + JSON.stringify(err));
 	});
