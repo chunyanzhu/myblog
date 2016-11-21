@@ -3,8 +3,8 @@ var host = 'localhost';
 var port = 27017;
 var server  = new mongo.Server(host, port, {auto_reconnect: true});
 
-//var db = new mongo.Db('zhu_data', server, {safe: true});
-var db = new mongo.Db('myblogDb', server, {safe: true});
+var db = new mongo.Db('zhu_data', server, {safe: true});
+//var db = new mongo.Db('myblogDb', server, {safe: true});
 var ObjectId= require('mongodb').ObjectID;
 db.on('close', function (err, db) {
 	if(err){
